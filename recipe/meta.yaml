@@ -1,4 +1,4 @@
-{% set version = "3.16.5" %}
+{% set version = "3.21.4" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -7,20 +7,18 @@ package:
 
 source:
   - url: https://gitlab.kitware.com/cmake/cmake/-/archive/v{{ version }}/cmake-v{{ version }}.tar.bz2
-    sha256: a87d374f15f775e1eff49830ba19d70cb0ee97662333b15bf7f96fb2f83f563e
+    sha256: 9d9faeb1100be2124665de7d0ad666db8c36a53e828a78599e7b7dc21f3b8927
     patches:
-      - patches/3.16.2/0001-find_-Add-debug-logging-infrastructure.patch
-      - patches/3.16.2/0002-find_-Use-debug-logging-infrastructure.patch
-      - patches/3.16.2/0003-Add-more-debug-logging-to-cmFindCommon.patch
+      - patches/git/0001-Add-more-debug-logging-to-cmFindCommon.patch
     folder: cmake
 
   # build cmake with itself on Windows
-  - url: https://cmake.org/files/v{{ version[:4] }}/cmake-{{ version }}-win32-x86.zip  # [win32]
-    sha256: 9110d3c68377f4dd21105414f6d2cea434959252d8e1a20fc29da3978f6f31de  # [win32]
+  - url: https://cmake.org/files/v{{ version[:4] }}/cmake-{{ version }}-windows-i386.zip  # [win32]
+    sha256: 970d38453abd7c5953415b8ea8c1f66f88a2bd2548feabc5e4b6f1b8c4acdcae  # [win32]
     folder: cmake-bin  # [win32]
 
-  - url: https://cmake.org/files/v{{ version[:4] }}/cmake-{{ version }}-win64-x64.zip  # [win64]
-    sha256: 70812d07a19d4e14a9e625fdd698f0dcd0c6f32d81d63979c645f5327e0772e2  # [win64]
+  - url: https://cmake.org/files/v{{ version[:4] }}/cmake-{{ version }}-windows-x86_64.zip  # [win64]
+    sha256: 360ee9bf77cd891d4a33997e4e214d0cd6a0fd7ae6051d023f403a74248914a8  # [win64]
     folder: cmake-bin  # [win64]
 
 build:
