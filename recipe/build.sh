@@ -1,6 +1,8 @@
 #!/bin/bash
 set -ex
 
+pushd cmake
+
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == 1 ]]; then
   (
     export CC=$CC_FOR_BUILD
@@ -79,3 +81,5 @@ else
   # CMake automatically selects the highest C++ standard available
   make install -j${CPU_COUNT}
 fi
+
+popd

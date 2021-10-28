@@ -12,11 +12,13 @@ source:
       - patches/3.16.2/0001-find_-Add-debug-logging-infrastructure.patch
       - patches/3.16.2/0002-find_-Use-debug-logging-infrastructure.patch
       - patches/3.16.2/0003-Add-more-debug-logging-to-cmFindCommon.patch
+    folder: cmake
   # build cmake with itself on Windows
   - url: https://cmake.org/files/v{{ version[:4] }}/cmake-{{ version }}-win32-x86.zip  # [win32]
     sha256: 9110d3c68377f4dd21105414f6d2cea434959252d8e1a20fc29da3978f6f31de  # [win32]
   - url: https://cmake.org/files/v{{ version[:4] }}/cmake-{{ version }}-win64-x64.zip  # [win64]
     sha256: 70812d07a19d4e14a9e625fdd698f0dcd0c6f32d81d63979c645f5327e0772e2  # [win64]
+    # applied to win32/win64:
     folder: cmake-bin  # [win]
 
 build:
