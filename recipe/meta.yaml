@@ -34,6 +34,10 @@ requirements:
     - {{ posix }}patch
     - jom             # [win]
 
+  host:
+    # aarch64/s390x?
+    - libcurl         # [unix]
+
 test:
   commands:
     - cmake --version
