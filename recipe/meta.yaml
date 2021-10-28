@@ -8,8 +8,6 @@ package:
 source:
   - url: https://gitlab.kitware.com/cmake/cmake/-/archive/v{{ version }}/cmake-v{{ version }}.tar.bz2
     sha256: 9d9faeb1100be2124665de7d0ad666db8c36a53e828a78599e7b7dc21f3b8927
-    patches:
-      - patches/git/0001-Add-more-debug-logging-to-cmFindCommon.patch
     folder: cmake
 
   # build cmake with itself on Windows
