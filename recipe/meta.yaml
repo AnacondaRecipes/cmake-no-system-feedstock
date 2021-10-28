@@ -49,17 +49,17 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file:
-    - Copyright.txt
-    - Utilities/cmbzip2/LICENSE
-    - Utilities/cmcurl/COPYING
-    - Utilities/cmexpat/COPYING
-    - Utilities/cmjsoncpp/LICENSE
-    - Utilities/cmlibarchive/COPYING
-    - Utilities/cmliblzma/COPYING
-    - Utilities/cmlibrhash/COPYING
-    - Utilities/cmlibuv/LICENSE
-    - Utilities/cmzlib/Copyright.txt
-    - Utilities/cmzstd/LICENSE
+    - cmake/Copyright.txt
+    - cmake/Utilities/cmbzip2/LICENSE
+    - cmake/Utilities/cmcurl/COPYING
+    - cmake/Utilities/cmexpat/COPYING
+    - cmake/Utilities/cmjsoncpp/LICENSE
+    - cmake/Utilities/cmlibarchive/COPYING
+    - cmake/Utilities/cmliblzma/COPYING
+    - cmake/Utilities/cmlibrhash/COPYING
+    - cmake/Utilities/cmlibuv/LICENSE
+    - cmake/Utilities/cmzlib/Copyright.txt
+    - cmake/Utilities/cmzstd/LICENSE
   summary: CMake built without system libraries for use when building CMake dependencies.
 
 extra:
