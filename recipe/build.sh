@@ -69,6 +69,7 @@ else
                --no-qt-gui \
                --parallel=${CPU_COUNT} \
                -- \
+               -DCMAKE_AR=${AR} \
                -DCMAKE_BUILD_TYPE:STRING=Release \
                -DCMAKE_FIND_ROOT_PATH="${PREFIX}" \
                -DCMAKE_INSTALL_RPATH="${PREFIX}/lib" \
