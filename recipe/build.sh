@@ -64,7 +64,7 @@ else
 
   # needed on aarch64
   if [[ -n "$AR" ]]; then
-    CMAKE_AR=-DCMAKE_AR=${AR}
+    CMAKE_AR="-DCMAKE_AR=${AR}"
   fi
 
   ./bootstrap \
