@@ -62,6 +62,11 @@ else
     CFLAGS="${CFLAGS} -DTARGET_OS_IPHONE=0 -DTARGET_OS_WATCH=0 -DTARGET_OS_TV=0"
   fi
 
+  # needed on aarch64
+  if [[ -n "$AR" ]]; then
+    CMAKE_AR=-DCMAKE_AR=${AR}
+  fi
+
   ./bootstrap \
                --verbose \
                --prefix="${PREFIX}" \
@@ -69,7 +74,7 @@ else
                --no-qt-gui \
                --parallel=${CPU_COUNT} \
                -- \
-               -DCMAKE_AR=${AR} \
+               ${CMAKE_AR} \
                -DCMAKE_BUILD_TYPE:STRING=Release \
                -DCMAKE_FIND_ROOT_PATH="${PREFIX}" \
                -DCMAKE_INSTALL_RPATH="${PREFIX}/lib" \
