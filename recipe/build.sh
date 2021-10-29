@@ -63,8 +63,8 @@ else
   fi
 
   # aarch64 has trouble with curl and ar
-  if [[ "${target_pltaform}" == linux-aarch64 ]]; then
-    SYSTEM_CURL="--system-curl"
+  if [[ "${target_platform}" == linux-aarch64 ]]; then
+    # SYSTEM_CURL="--system-curl" # may be unnecessary
     if [[ -n "$AR" ]]; then
       CMAKE_AR="-DCMAKE_AR=${AR}"
     fi
