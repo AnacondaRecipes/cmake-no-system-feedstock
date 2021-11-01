@@ -62,9 +62,8 @@ else
     CFLAGS="${CFLAGS} -DTARGET_OS_IPHONE=0 -DTARGET_OS_WATCH=0 -DTARGET_OS_TV=0"
   fi
 
-  # aarch64 has trouble with curl and ar
+  # linux-aarch64 has trouble finding ar
   if [[ "${target_platform}" == linux-aarch64 ]]; then
-    # SYSTEM_CURL="--system-curl" # may be unnecessary
     if [[ -n "$AR" ]]; then
       CMAKE_AR="-DCMAKE_AR=${AR}"
     fi
@@ -75,7 +74,6 @@ else
                --prefix="${PREFIX}" \
                --no-system-libs \
                --no-qt-gui \
-               ${SYSTEM_CURL} \
                --parallel=${CPU_COUNT} \
                -- \
                ${CMAKE_AR} \

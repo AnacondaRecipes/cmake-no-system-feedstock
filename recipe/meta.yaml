@@ -37,8 +37,6 @@ requirements:
     - {{ posix }}make
     - {{ posix }}patch
     - jom             # [win]
-#  host:               # [linux and aarch64]
-#    - libcurl         # [linux and aarch64]
 
 test:
   commands:
