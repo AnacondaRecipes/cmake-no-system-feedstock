@@ -1,6 +1,8 @@
 #!/bin/bash
 set -ex
 
+pushd cmake
+
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == 1 ]]; then
   (
     export CC=$CC_FOR_BUILD
@@ -60,6 +62,13 @@ else
     CFLAGS="${CFLAGS} -DTARGET_OS_IPHONE=0 -DTARGET_OS_WATCH=0 -DTARGET_OS_TV=0"
   fi
 
+  # linux-aarch64 has trouble finding ar
+  if [[ "${target_platform}" == linux-aarch64 ]]; then
+    if [[ -n "$AR" ]]; then
+      CMAKE_AR="-DCMAKE_AR=${AR}"
+    fi
+  fi
+
   ./bootstrap \
                --verbose \
                --prefix="${PREFIX}" \
@@ -67,6 +76,7 @@ else
                --no-qt-gui \
                --parallel=${CPU_COUNT} \
                -- \
+               ${CMAKE_AR} \
                -DCMAKE_BUILD_TYPE:STRING=Release \
                -DCMAKE_FIND_ROOT_PATH="${PREFIX}" \
                -DCMAKE_INSTALL_RPATH="${PREFIX}/lib" \
@@ -79,3 +89,5 @@ else
   # CMake automatically selects the highest C++ standard available
   make install -j${CPU_COUNT}
 fi
+
+popd
