@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://gitlab.kitware.com/cmake/cmake/-/archive/v{{ version }}/cmake-v{{ version }}.tar.bz2
-    sha256: a87d374f15f775e1eff49830ba19d70cb0ee97662333b15bf7f96fb2f83f563e
+    sha256: b716b28ac5a4dbaac332de74766a036d5c8418d1ca559e864984d84e0779ee88
     patches:
       - patches/3.16.2/0001-find_-Add-debug-logging-infrastructure.patch
       - patches/3.16.2/0002-find_-Use-debug-logging-infrastructure.patch
@@ -24,7 +24,7 @@ source:
     folder: cmake-bin  # [win64]
 
 build:
-  number: 2
+  number: 3
   skip: True  # [win and vc<14]
   detect_binary_files_with_prefix: False
   ignore_run_exports:
@@ -46,8 +46,8 @@ test:
 
 about:
   home: http://www.cmake.org/
-  doc_url: https://cmake.org/documentation/
-  dev_url: https://gitlab.kitware.com/cmake/cmake
+  doc_url: http://cmake.org/documentation/
+  dev_url: http://gitlab.kitware.com/cmake/cmake
   license: BSD-3-Clause
   license_family: BSD
   license_file:
@@ -63,6 +63,11 @@ about:
     - cmake/Utilities/cmzlib/Copyright.txt
     - cmake/Utilities/cmzstd/LICENSE
   summary: CMake built without system libraries for use when building CMake dependencies.
+  description: | 
+  CMake is an open-source, cross-platform family of tools designed to build, test and package software. 
+  CMake is used to control the software compilation process using simple platform and compiler independent configuration files, 
+  and generate native makefiles and workspaces that can be used in the compiler environment of your choice.
+
 
 extra:
   recipe-maintainers:
