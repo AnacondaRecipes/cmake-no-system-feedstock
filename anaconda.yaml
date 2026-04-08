@@ -3,3 +3,4 @@ upstream_sources:
   - gitlab:
       identifier: cmake/cmake
       host: gitlab.kitware.com
+      use_max_tag: true
