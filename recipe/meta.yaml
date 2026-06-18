@@ -1,20 +1,21 @@
-{% set version = "3.25.3" %}
+{% set name = "cmake-no-system" %}
+{% set version = "4.3.2" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
-  name: cmake-no-system
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-
   - url: https://github.com/Kitware/CMake/releases/download/v{{ version }}/cmake-{{ version }}.tar.gz
-    sha256: cc995701d590ca6debc4245e9989939099ca52827dd46b5d3592f093afe1901c
+    sha256: b0231eb39b3c3cabdc568c619df78208a7bd95ea10c9b2236d61218bac1b367d
     folder: cmake
+  # build cmake with itself on Windows
   - url: https://github.com/Kitware/CMake/releases/download/v{{ version }}/cmake-{{ version }}-windows-x86_64.zip  # [win and x86_64]
-    sha256: 109c29a744d648863d3637b4963c90088045c8d92799c68c9b9d8713407776c8  # [win and x86_64]
+    sha256: 83d20c23f5c5f64b3b328785e35b23c532e33057a97ed6294acaca3781b78a01  # [win and x86_64]
     folder: cmake-bin  # [win and x86_64]
   - url: https://github.com/Kitware/CMake/releases/download/v{{ version }}/cmake-{{ version }}-windows-arm64.zip  # [win and arm64]
-    sha256: 3498fea26257eebfbfc89ed17963f3d8d83c19362b90fb23517842de777a522a  # [win and arm64]
+    sha256: 42a2a88fc57e70d04a92f6eaaac2094241995f53584bc2afdae7e6ef982b3781  # [win and arm64]
     folder: cmake-bin  # [win and arm64]
 
 build:
@@ -26,10 +27,11 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ posix }}make
-    - jom             # [win]
+    - jom  # [win]
 
 test:
   commands:
@@ -38,13 +40,11 @@ test:
     - cpack --version
 
 about:
-  home: https://cmake.org/
-  doc_url: https://cmake.org/documentation/
-  dev_url: https://gitlab.kitware.com/cmake/cmake
+  home: https://cmake.org
   license: BSD-3-Clause
   license_family: BSD
   license_file:
-    - cmake/Copyright.txt
+    - cmake/LICENSE.rst
     - cmake/Utilities/cmbzip2/LICENSE
     - cmake/Utilities/cmcurl/COPYING
     - cmake/Utilities/cmexpat/COPYING
@@ -56,11 +56,12 @@ about:
     - cmake/Utilities/cmzlib/Copyright.txt
     - cmake/Utilities/cmzstd/LICENSE
   summary: CMake built without system libraries for use when building CMake dependencies.
-  
   description: |
     CMake is an open-source, cross-platform family of tools designed to build, test and package software.
     CMake is used to control the software compilation process using simple platform and compiler independent configuration files,
     and generate native makefiles and workspaces that can be used in the compiler environment of your choice.
+  doc_url: https://cmake.org/documentation
+  dev_url: https://gitlab.kitware.com/cmake/cmake
 
 
 extra:
