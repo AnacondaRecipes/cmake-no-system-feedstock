@@ -1,6 +1,5 @@
 {% set name = "cmake-no-system" %}
 {% set version = "4.3.2" %}
-{% set posix = 'm2-' if win else '' %}
 
 package:
   name: {{ name|lower }}
@@ -20,7 +19,6 @@ source:
 
 build:
   number: 1
-  skip: True  # [win and vc<14]
   detect_binary_files_with_prefix: False
   ignore_run_exports:
     - vc
@@ -30,7 +28,7 @@ requirements:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ posix }}make
+    - make  # [unix]
     - jom  # [win]
 
 test:
