@@ -19,7 +19,7 @@ source:
     folder: cmake-bin  # [win and arm64]
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and vc<14]
   detect_binary_files_with_prefix: False
   ignore_run_exports:
